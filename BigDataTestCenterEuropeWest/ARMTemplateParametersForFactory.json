@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "BigDataTestCenterEuropeWest"
+		},
+		"BigDataAzureDatalakeStorageEuropeWest_accountKey": {
+			"value": ""
+		},
+		"BigDataAzureDatalakeStorageEuropeWest_properties_typeProperties_url": {
+			"value": "https://bigdataspeicherkontoeuwe.dfs.core.windows.net"
+		},
+		"HttpServerArcgis_properties_typeProperties_url": {
+			"value": "https://opendata.arcgis.com"
+		},
+		"HttpServerCorona_properties_typeProperties_url": {
+			"value": "https://www.rki.de"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://api.openweathermap.org"
+		},
+		"RestServiceCorona_properties_typeProperties_url": {
+			"value": "https://services7.arcgis.com"
+		}
+	}
+}

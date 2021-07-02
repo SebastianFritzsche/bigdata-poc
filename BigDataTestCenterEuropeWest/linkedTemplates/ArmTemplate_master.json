@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory-Name",
+			"defaultValue": "BigDataTestCenterEuropeWest"
+		},
+		"BigDataAzureDatalakeStorageEuropeWest_accountKey": {
+			"type": "secureString",
+			"metadata": "Sichere Zeichenfolge für \"accountKey\" von \"BigDataAzureDatalakeStorageEuropeWest\""
+		},
+		"BigDataAzureDatalakeStorageEuropeWest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://bigdataspeicherkontoeuwe.dfs.core.windows.net"
+		},
+		"HttpServerArcgis_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://opendata.arcgis.com"
+		},
+		"HttpServerCorona_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.rki.de"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://api.openweathermap.org"
+		},
+		"RestServiceCorona_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://services7.arcgis.com"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI für Speicherkonto mit verknüpften ARM-Vorlagen"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "SAS-Token für Speicherkonto mit verknüpften ARM-Vorlagen"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "BigDataTestCenterEuropeWest_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"BigDataAzureDatalakeStorageEuropeWest_accountKey": {
+						"value": "[parameters('BigDataAzureDatalakeStorageEuropeWest_accountKey')]"
+					},
+					"BigDataAzureDatalakeStorageEuropeWest_properties_typeProperties_url": {
+						"value": "[parameters('BigDataAzureDatalakeStorageEuropeWest_properties_typeProperties_url')]"
+					},
+					"HttpServerArcgis_properties_typeProperties_url": {
+						"value": "[parameters('HttpServerArcgis_properties_typeProperties_url')]"
+					},
+					"HttpServerCorona_properties_typeProperties_url": {
+						"value": "[parameters('HttpServerCorona_properties_typeProperties_url')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					},
+					"RestServiceCorona_properties_typeProperties_url": {
+						"value": "[parameters('RestServiceCorona_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
